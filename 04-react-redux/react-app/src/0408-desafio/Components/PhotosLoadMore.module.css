@@ -1,0 +1,13 @@
+.buttonWrapper {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1rem;
+}
+
+.button {
+  width: 2.5rem;
+  height: 2.5rem;
+  font-size: 2rem;
+  display: flex;
+  place-content: center;
+}
