@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Redux</title>
+    <script src="https://unpkg.com/redux@4.0.5/dist/redux.min.js"></script>
+  </head>
+  <body>
+    <div>
+      <button id="button">Incrementar</button>
+    </div>
+
+    <script>
+      // Constantes
+      const INCREMENTAR = "incrementar";
+      const SOMAR = "somar";
+
+      // Action Creators
+      function incrementar() {
+        return { type: INCREMENTAR };
+      }
+
+      function somar(payload) {
+        return { type: SOMAR, payload };
+      }
+
+      const initialState = 10;
+
+      function reducer(state = initialState, action) {
+        if (action.type === INCREMENTAR) {
+          return state + 1;
+        }
+        if (action.type === SOMAR) {
+          return state + action.payload;
+        }
+        return state;
+      }
+      const store = Redux.createStore(reducer);
+      let state = store.getState();
+      store.dispatch(somar(25));
+      store.dispatch(incrementar());
+
+      state = store.getState();
+      console.log(state);
+
+      const button = document.getElementById("button");
+      button.addEventListener("click", () => {
+        store.dispatch(incrementar());
+      });
+    </script>
+  </body>
+</html>
